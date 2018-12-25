@@ -1,6 +1,6 @@
 import * as React from 'react';
-
 import { Column, Record } from './Types';
+import { throttle } from './FuncTools';
 
 interface PropsType {
     cols: Column[];
@@ -8,7 +8,7 @@ interface PropsType {
 }
 
 interface StateType {
-    hiddenCols: Set<Column>;
+    hiddenCols: Set<string>;
 }
 
 export class PriorityTable extends React.Component<PropsType, StateType> {
@@ -19,9 +19,17 @@ export class PriorityTable extends React.Component<PropsType, StateType> {
         }
     }
 
-    shouldRenderCol(colName: string) {
-        return !(colName in this.state.hiddenCols);
+    componentDidMount = (): void => {
+        const handleDimensionChange = throttle(this.handleDimensionChange, 300);
+        window.addEventListener('resize', handleDimensionChange as any);
     }
+
+    handleDimensionChange = (): void => {
+
+    }
+
+    shouldRenderCol = (colName: string): boolean => 
+        !(colName in this.state.hiddenCols);
 
     render = (): JSX.Element => (
         <div className="priority-table">
@@ -39,7 +47,7 @@ export class PriorityTable extends React.Component<PropsType, StateType> {
     renderHeader = (col: Column): JSX.Element => (
         this.shouldRenderCol(col.name) && (
             <div className={`priority-table__header ${col.className}`}>
-                    
+                {col.data}
             </div>
         )
     );

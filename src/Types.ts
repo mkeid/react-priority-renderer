@@ -1,5 +1,6 @@
 export interface Column {
     name: string;
+    data: any;
     priority: number;
     className?: string;
 }
