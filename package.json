@@ -1,0 +1,25 @@
+{
+  "name": "react-priority-renderer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohamedkeid/react-priority-renderer.git"
+  },
+  "author": "Mohamed K. Eid",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mohamedkeid/react-priority-renderer/issues"
+  },
+  "homepage": "https://github.com/mohamedkeid/react-priority-renderer#readme",
+  "dependencies": {
+    "react": "^16.7.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.7.18"
+  }
+}
