@@ -23,44 +23,38 @@ export class PriorityTable extends React.Component<PropsType, StateType> {
         return !(colName in this.state.hiddenCols);
     }
 
-    render() {
-        return (
-            <div className="priority-table">
-                {this.renderHeaders()}
-                {this.renderRecords()}
-            </div>
-        );
-    }
+    render = (): JSX.Element => (
+        <div className="priority-table">
+            {this.renderHeaders()}
+            {this.renderRecords()}
+        </div>
+    );
 
-    renderHeaders() {
-        return (
-            <div className="priority-table__headers">
-                {this.props.cols.map(this.renderHeader)}
-            </div>
-        );
-    }
+    renderHeaders = (): JSX.Element => (
+        <div className="priority-table__headers">
+            {this.props.cols.map(this.renderHeader)}
+        </div>
+    );
 
-    renderHeader(col: Column) {
-        return this.shouldRenderCol(col.name) && (
+    renderHeader = (col: Column): JSX.Element => (
+        this.shouldRenderCol(col.name) && (
             <div className={`priority-table__header ${col.className}`}>
                     
             </div>
-        );
-    }
+        )
+    );
 
-    renderRecords() {
-        return (
-            <div className="priority-table__records">
-                {this.props.records.map(this.renderRecord)}
-            </div>
-        );
-    }
+    renderRecords = (): JSX.Element => (
+        <div className="priority-table__records">
+            {this.props.records.map(this.renderRecord)}
+        </div>
+    );
 
-    renderRecord(record: Record) {
-        return this.shouldRenderCol(record.colName) && (
+    renderRecord = (record: Record): JSX.Element => (
+        this.shouldRenderCol(record.colName) && (
             <div className={`priority-table__record ${record.className}`}>
                 {record.data}
             </div>
         )
-    }
+    );
 }
